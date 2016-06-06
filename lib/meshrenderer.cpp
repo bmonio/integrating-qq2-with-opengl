@@ -88,6 +88,14 @@ void MeshRenderer::initialize(CoordinateMirroring cm)
     m_normalsBuffer->setUsagePattern(QOpenGLBuffer::StaticDraw);
     m_normalsBuffer->allocate(normals.constData(), normals.size() * sizeof(QVector3D));
 
+    m_texture = new QOpenGLTexture(QImage(":/assets/1423961457_18679620.jpg"));
+
+    const QVector<QVector2D> txtCoords = loader.textureCoordinates();
+    m_txtCoordBuffer->create();
+    m_txtCoordBuffer->bind();
+    m_txtCoordBuffer->setUsagePattern(QOpenGLBuffer::StaticDraw);
+    m_txtCoordBuffer->allocate(txtCoords.constData(), txtCoords.size()*sizeof (QVector2D));
+
     const QVector<unsigned int> indices = loader.indices();
     m_indicesCount = indices.size();
     if (!m_indicesBuffer->create())
@@ -116,6 +124,10 @@ void MeshRenderer::initialize(CoordinateMirroring cm)
     m_normalsBuffer->bind();
     m_shaderProgram->enableAttributeArray("vertexNormal");
     m_shaderProgram->setAttributeBuffer("vertexNormal", GL_FLOAT, 0, 3);
+
+    m_txtCoordBuffer->bind();
+    m_shaderProgram->enableAttributeArray("uv");
+    m_shaderProgram->setAttributeBuffer("uv", GL_FLOAT, 0, 2);
 
     m_vao->release();
 }

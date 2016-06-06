@@ -2,8 +2,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     lib \
-    underlay \
     fbo \
-    rendercontrol \
+#    underlay \
+#    rendercontrol \
 
 CONFIG += ordered

@@ -29,6 +29,7 @@
 class QOpenGLBuffer;
 class QOpenGLShaderProgram;
 class QOpenGLVertexArrayObject;
+class QOpenGLTexture;
 
 class MeshRenderer : public QObject
 {
@@ -55,8 +56,11 @@ private:
     QScopedPointer<QOpenGLBuffer> m_positionsBuffer;
     QScopedPointer<QOpenGLBuffer> m_normalsBuffer;
     QScopedPointer<QOpenGLBuffer> m_indicesBuffer;
+    QScopedPointer<QOpenGLBuffer> m_txtCoordBuffer;
     QScopedPointer<QOpenGLShaderProgram> m_shaderProgram;
     QScopedPointer<QOpenGLVertexArrayObject> m_vao;
+
+    QOpenGLTexture*      m_texture;
 
     int m_indicesCount;
 

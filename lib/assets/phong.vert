@@ -26,6 +26,8 @@ in vec3 vertexNormal;
 
 out vec3 position;
 out vec3 normal;
+uniform vec2 uv;
+uniform sampler2D source;
 
 uniform mat4 modelViewMatrix;
 uniform mat3 normalMatrix;

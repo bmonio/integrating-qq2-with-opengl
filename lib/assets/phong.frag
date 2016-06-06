@@ -37,6 +37,8 @@ uniform MaterialInfo material;
 
 in vec3 position;
 in vec3 normal;
+uniform vec2 uv;
+uniform sampler2D source;
 
 out vec4 fragColor;
 
